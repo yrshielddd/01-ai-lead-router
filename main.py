@@ -66,15 +66,26 @@ def create_lead(lead: Lead):
     db.commit()
     db.refresh(new_lead)
 
-    crm_result = send_to_crm(
-        lead_id=new_lead.id,
-        name=lead.name,
-        email=lead.email,
-        message=lead.message,
-        category=category,
-    )
+    try:
+        crm_result = send_to_crm(
+            lead_id=new_lead.id,
+            name=lead.name,
+            email=lead.email,
+            message=lead.message,
+            category=category,
+        )
 
-    new_lead.status = "sent_to_crm"
+        new_lead.status = "sent_to_crm"
+
+    except Exception as e:
+        crm_result = {
+            "crm": "bitrix24",
+            "status": "error",
+            "error": str(e),
+        }
+
+        new_lead.status = "crm_error"
+
     db.commit()
 
     lead_id = new_lead.id
