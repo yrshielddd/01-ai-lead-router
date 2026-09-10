@@ -62,3 +62,38 @@ Return only the category name:
 or
 
 `other`
+
+## Examples
+
+Message: "Сколько стоит изготовление конструкции?"
+Category: sales
+
+Message: "Сколько будет стоить доставка в Ростов?"
+Category: logistics
+
+Message: "Когда сможете доставить мой заказ?"
+Category: logistics
+
+Message: "У меня не работает оборудование."
+Category: support
+
+Message: "В конструкции обнаружена ошибка."
+Category: support
+
+Message: "Хочу купить конструкцию для производства."
+Category: sales
+
+Message: "Здравствуйте, хочу предложить сотрудничество."
+Category: other
+
+## Final Instruction
+
+Analyze the customer message according to the rules and examples above.
+
+Return ONLY ONE WORD:
+sales
+logistics
+support
+other
+
+Do not explain your answer.
